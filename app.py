@@ -10,7 +10,8 @@ import numpy as np
 
 # Inisialisasi aplikasi Flask
 app = Flask(__name__)
-CORS(app, resources={r"/api/*": {"origins": "https://mangrove-corner.vercel.app"}})
+CORS(app, resources={r"/api/*": {"origins": "*"}}) 
+
 
 # Konfigurasi
 UPLOAD_FOLDER = 'uploads/'
