@@ -15,6 +15,10 @@ RUN python -m venv /opt/venv && \
 # Set environment variable untuk menghindari masalah dengan Flask
 ENV FLASK_APP=app.py
 ENV FLASK_ENV=production
+ENV FLASK_RUN_HOST=0.0.0.0  # Agar Flask dapat diakses dari luar container
 
-# Tentukan perintah untuk menjalankan aplikasi
-CMD ["/opt/venv/bin/python", "app.py"]
+# Tentukan entrypoint untuk menjalankan aplikasi
+ENTRYPOINT ["/opt/venv/bin/python", "app.py"]
+
+# Atur port yang digunakan
+EXPOSE 5000
