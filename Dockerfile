@@ -15,7 +15,9 @@ RUN python -m venv /opt/venv && \
 # Set environment variable untuk menghindari masalah dengan Flask
 ENV FLASK_APP=app.py
 ENV FLASK_ENV=production
-ENV FLASK_RUN_HOST=0.0.0.0  # Agar Flask dapat diakses dari luar container
+# Agar Flask dapat diakses dari luar container
+ENV FLASK_RUN_HOST=0.0.0.0
+
 
 # Tentukan perintah untuk menjalankan aplikasi
 CMD ["/opt/venv/bin/python", "app.py"]
