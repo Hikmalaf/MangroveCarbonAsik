@@ -10,7 +10,7 @@ import numpy as np
 
 # Inisialisasi aplikasi Flask
 app = Flask(__name__)
-CORS(app, resources={r"/api/*": {"origins": "*"}}) 
+CORS(app, resources={r"/api/*": {"origins": ["*","http://localhost:5173"]}})
 
 
 # Konfigurasi
