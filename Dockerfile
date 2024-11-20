@@ -1,18 +1,21 @@
-FROM python:3.11-slim
+# Set the base image
+FROM python:3.9-slim
 
+# Set working directory
 WORKDIR /app
 
-COPY . /app/
+# Copy requirements file and install dependencies
+COPY requirements.txt .
 
-RUN python -m venv /opt/venv && \
-    /opt/venv/bin/pip install --upgrade pip && \
-    /opt/venv/bin/pip install -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
+# Copy application code
+COPY . .
+
+# Expose port
+EXPOSE 5000
+
+# Run the Flask app
 ENV FLASK_APP=app.py
-ENV FLASK_ENV=production
-
 ENV FLASK_RUN_HOST=0.0.0.0
-
-
-
-CMD ["/opt/venv/bin/python", "app.py"]
+CMD ["flask", "run"]
